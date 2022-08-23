@@ -1,9 +1,7 @@
-const Header = () => {
-  return (
-    <header>
-      <h1>todos</h1>
-    </header>
-  );
-};
+const Header = () => (
+  <header>
+    <h1>todos</h1>
+  </header>
+);
 
 export default Header;
