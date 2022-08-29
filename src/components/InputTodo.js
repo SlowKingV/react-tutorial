@@ -9,8 +9,14 @@ class InputTodo extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    let { title } = this.state;
+    title = title.trim();
+    if (!title) {
+      alert('Please write item');
+      return;
+    }
     const { addTodoItem } = this.props;
-    addTodoItem(this.state);
+    addTodoItem({ title });
   }
 
   onChange = (e) => {
