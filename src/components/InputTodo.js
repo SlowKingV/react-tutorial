@@ -1,10 +1,18 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class InputTodo extends Component {
   constructor(props) {
     super(props);
     this.state = { title: '' };
     this.onChange = this.onChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const { addTodoItem } = this.props;
+    addTodoItem(this.state);
   }
 
   onChange(e) {
@@ -16,12 +24,16 @@ class InputTodo extends Component {
   render() {
     const { title } = this.state;
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Add Todos..." name="title" value={title} onChange={this.onChange} />
         <button type="submit">Submit</button>
       </form>
     );
   }
 }
+
+InputTodo.propTypes = {
+  addTodoItem: PropTypes.func.isRequired,
+};
 
 export default InputTodo;
