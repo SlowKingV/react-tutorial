@@ -5,17 +5,15 @@ class InputTodo extends Component {
   constructor(props) {
     super(props);
     this.state = { title: '' };
-    this.onChange = this.onChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { addTodoItem } = this.props;
     addTodoItem(this.state);
   }
 
-  onChange(e) {
+  onChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
